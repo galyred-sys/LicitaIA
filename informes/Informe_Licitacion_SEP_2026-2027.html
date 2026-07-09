@@ -1,0 +1,666 @@
+<title>Informe de licitación · Centro de Datos SEP 2026-2027</title>
+<style>
+  :root {
+    --ground: #F1EFF0;
+    --surface: #FBFAFA;
+    --surface-2: #F5F2F3;
+    --ink: #191317;
+    --muted: #6E646A;
+    --faint: #928791;
+    --line: #E2DCDF;
+    --line-strong: #D2C9CD;
+    --accent: #7C1D3E;
+    --accent-strong: #9F2241;
+    --accent-wash: #f3e6ea;
+    --lever: #1C6E60;
+    --lever-wash: #e2f0ec;
+    --risk: #9C6712;
+    --risk-wash: #f5ecd9;
+    --critical: #A83422;
+    --critical-wash: #f6e5e1;
+    --shadow: 0 1px 2px rgba(25,19,23,.05), 0 8px 24px -12px rgba(25,19,23,.12);
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #131013;
+      --surface: #1B161A;
+      --surface-2: #221C21;
+      --ink: #ECE4E8;
+      --muted: #A99DA4;
+      --faint: #857A81;
+      --line: #2C242A;
+      --line-strong: #3A3037;
+      --accent: #D06382;
+      --accent-strong: #E9738F;
+      --accent-wash: #2c1720;
+      --lever: #52C4AE;
+      --lever-wash: #142924;
+      --risk: #DDA53C;
+      --risk-wash: #2a2213;
+      --critical: #E07A64;
+      --critical-wash: #2c1913;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #F1EFF0; --surface: #FBFAFA; --surface-2: #F5F2F3; --ink: #191317;
+    --muted: #6E646A; --faint: #928791; --line: #E2DCDF; --line-strong: #D2C9CD;
+    --accent: #7C1D3E; --accent-strong: #9F2241; --accent-wash: #f3e6ea;
+    --lever: #1C6E60; --lever-wash: #e2f0ec; --risk: #9C6712; --risk-wash: #f5ecd9;
+    --critical: #A83422; --critical-wash: #f6e5e1;
+    --shadow: 0 1px 2px rgba(25,19,23,.05), 0 8px 24px -12px rgba(25,19,23,.12);
+  }
+  :root[data-theme="dark"] {
+    --ground: #131013; --surface: #1B161A; --surface-2: #221C21; --ink: #ECE4E8;
+    --muted: #A99DA4; --faint: #857A81; --line: #2C242A; --line-strong: #3A3037;
+    --accent: #D06382; --accent-strong: #E9738F; --accent-wash: #2c1720;
+    --lever: #52C4AE; --lever-wash: #142924; --risk: #DDA53C; --risk-wash: #2a2213;
+    --critical: #E07A64; --critical-wash: #2c1913;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: var(--sans); line-height: 1.6;
+    font-size: 16px; letter-spacing: -0.003em;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- masthead ---------- */
+  .masthead { padding: 56px 0 34px; border-bottom: 2px solid var(--ink); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .eyebrow .seal {
+    width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-wash);
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(30px, 5.4vw, 52px); line-height: 1.04;
+    letter-spacing: -0.02em; margin: 18px 0 0; text-wrap: balance;
+    max-width: 15ch;
+  }
+  .dek {
+    font-size: clamp(15px, 2vw, 18.5px); color: var(--muted);
+    margin: 16px 0 0; max-width: 60ch; text-wrap: pretty;
+  }
+  .ficha {
+    margin-top: 26px; display: grid; gap: 1px; background: var(--line);
+    border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .ficha div { background: var(--surface); padding: 11px 14px; }
+  .ficha dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--faint); margin: 0 0 3px;
+  }
+  .ficha dd { margin: 0; font-size: 13.5px; font-weight: 600; }
+  .ficha dd.hot { color: var(--accent-strong); }
+
+  /* ---------- verdict ---------- */
+  .verdict {
+    margin-top: 30px; background: var(--surface); border: 1px solid var(--line-strong);
+    border-left: 4px solid var(--accent); border-radius: 12px; padding: 24px 26px;
+    box-shadow: var(--shadow);
+  }
+  .verdict .tag {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600;
+  }
+  .verdict p { margin: 10px 0 0; font-size: 17px; line-height: 1.55; }
+  .verdict strong { color: var(--ink); font-weight: 700; }
+  .verdict .k { color: var(--accent-strong); font-weight: 700; }
+
+  /* ---------- section scaffolding ---------- */
+  section { padding: 46px 0; border-bottom: 1px solid var(--line); }
+  .sec-head { display: flex; gap: 16px; align-items: baseline; margin-bottom: 24px; }
+  .sec-num {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    font-weight: 600; padding-top: 5px; min-width: 30px;
+  }
+  .sec-head h2 {
+    font-family: var(--serif); font-weight: 700; font-size: clamp(21px, 3.2vw, 29px);
+    letter-spacing: -0.015em; margin: 0 0 3px; text-wrap: balance;
+  }
+  .sec-head p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .sec-body { padding-left: 46px; }
+  @media (max-width: 620px) { .sec-body { padding-left: 0; } }
+
+  p.lead { font-size: 16px; margin: 0 0 18px; max-width: 68ch; }
+  p.lead strong { color: var(--ink); }
+
+  /* ---------- KPI tiles ---------- */
+  .kpis {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    border-radius: 12px; overflow: hidden;
+  }
+  .kpi { background: var(--surface); padding: 18px 16px; }
+  .kpi .n {
+    font-family: var(--serif); font-weight: 700; font-size: 27px;
+    letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1;
+  }
+  .kpi .u { font-size: 13px; color: var(--muted); font-weight: 400; }
+  .kpi .l {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--faint); margin-top: 7px;
+  }
+  .kpi-note {
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    margin-top: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .kpi-note b { color: var(--accent-strong); }
+
+  /* ---------- cards / claves ---------- */
+  .grid { display: grid; gap: 14px; }
+  .g2 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .g3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 18px 19px; box-shadow: var(--shadow);
+  }
+  .card h3 {
+    font-family: var(--sans); font-weight: 700; font-size: 15.5px; margin: 0 0 7px;
+    display: flex; align-items: center; gap: 9px; letter-spacing: -0.01em;
+  }
+  .card p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .card .spec {
+    font-family: var(--mono); font-size: 12px; color: var(--ink);
+    margin: 9px 0 0; padding-top: 9px; border-top: 1px dashed var(--line-strong);
+    font-variant-numeric: tabular-nums;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+  .dot.a { background: var(--accent); } .dot.l { background: var(--lever); }
+  .dot.r { background: var(--risk); } .dot.c { background: var(--critical); }
+
+  /* palanca cards */
+  .palanca {
+    background: var(--lever-wash); border: 1px solid transparent;
+    border-left: 4px solid var(--lever); border-radius: 12px; padding: 18px 20px;
+  }
+  .palanca .idx {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--lever); font-weight: 700;
+  }
+  .palanca h3 { font-size: 16px; margin: 6px 0 6px; font-weight: 700; }
+  .palanca p { margin: 0; font-size: 14px; color: var(--ink); opacity: .82; }
+
+  /* ---------- chips ---------- */
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase;
+    font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+  }
+  .chip.palanca-c { background: var(--lever-wash); color: var(--lever); }
+  .chip.riesgo { background: var(--risk-wash); color: var(--risk); }
+  .chip.critico { background: var(--critical-wash); color: var(--critical); }
+  .chip.aclarar { background: var(--accent-wash); color: var(--accent-strong); }
+
+  /* ---------- tables ---------- */
+  .tbl-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 560px; background: var(--surface); }
+  thead th {
+    text-align: left; font-family: var(--mono); font-size: 10.5px; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--faint); font-weight: 600;
+    padding: 11px 14px; border-bottom: 1px solid var(--line-strong); background: var(--surface-2);
+    position: sticky; top: 0;
+  }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  td .who { font-weight: 700; }
+  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+  td.sla { font-family: var(--mono); font-weight: 700; color: var(--accent-strong); text-align: right; }
+
+  /* ---------- ordered list (junta) ---------- */
+  ol.q { list-style: none; counter-reset: q; margin: 0; padding: 0; display: grid; gap: 11px; }
+  ol.q li {
+    counter-increment: q; position: relative; padding: 14px 16px 14px 52px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 11px;
+    font-size: 14.5px; line-height: 1.5;
+  }
+  ol.q li::before {
+    content: counter(q); position: absolute; left: 13px; top: 13px;
+    width: 26px; height: 26px; border-radius: 7px; background: var(--accent-wash);
+    color: var(--accent-strong); font-family: var(--mono); font-weight: 700;
+    font-size: 13px; display: flex; align-items: center; justify-content: center;
+  }
+  ol.q li b { color: var(--ink); }
+
+  .impact {
+    display: inline-block; font-family: var(--mono); font-size: 10px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+    font-weight: 700; margin-left: 6px;
+  }
+
+  /* ---------- consortium ---------- */
+  .cons { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+  .cons .card { display: flex; flex-direction: column; }
+  .cons .card.win { border-color: var(--lever); box-shadow: 0 0 0 1px var(--lever), var(--shadow); }
+  .cons .rank {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; margin-bottom: 4px; color: var(--muted);
+  }
+  .cons .card.win .rank { color: var(--lever); }
+  .cons h3 { font-family: var(--serif); font-size: 18px; margin: 0 0 10px; }
+  .cons ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 13px; }
+  .cons ul li { display: flex; gap: 8px; color: var(--muted); }
+  .cons ul li b { color: var(--ink); font-weight: 600; min-width: 74px; display: inline-block; }
+  .cons .note { margin-top: 12px; padding-top: 11px; border-top: 1px dashed var(--line-strong); font-size: 12.5px; color: var(--muted); }
+
+  /* barreras */
+  .barreras { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .barrera { background: var(--surface); border: 1px solid var(--line); border-radius: 11px; padding: 15px 17px; }
+  .barrera .h { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+  .barrera ul { margin: 0; padding-left: 17px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .barrera ul li { margin: 3px 0; }
+
+  .riskrow { display: flex; gap: 12px; align-items: flex-start; padding: 13px 0; border-bottom: 1px solid var(--line); }
+  .riskrow:last-child { border-bottom: none; }
+  .riskrow .body { font-size: 14px; }
+  .riskrow .body b { display: block; margin-bottom: 2px; }
+  .riskrow .body span { color: var(--muted); font-size: 13.5px; }
+
+  footer { padding: 40px 0 60px; color: var(--faint); font-size: 12.5px; }
+  footer .disc { font-family: var(--mono); line-height: 1.7; }
+  footer .brand { font-family: var(--serif); font-size: 16px; color: var(--ink); font-weight: 700; }
+  footer .brand span { color: var(--accent); }
+
+  a.jump { color: var(--accent-strong); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: up .7s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  }
+  :focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 3px; border-radius: 3px; }
+
+  /* legend + total row */
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; font-size: 12px; color: var(--muted); align-items: center; }
+  tbody tr.total td { border-top: 2px solid var(--ink); font-weight: 700; background: var(--surface-2); }
+  tbody tr.total td.num { color: var(--accent-strong); font-size: 15px; }
+
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    :root { --shadow: none; }
+    body { background: #fff; font-size: 11px; }
+    .wrap { max-width: 100%; padding: 0 6px; }
+    section { padding: 16px 0; }
+    .sec-head { break-after: avoid; }
+    .sec-body { padding-left: 0; }
+    .card, .palanca, .riskrow, ol.q li, .cons > .card, .barrera, .verdict, .kpi, .tbl-wrap, .ficha { break-inside: avoid; }
+    .tbl-wrap { overflow: visible; box-shadow: none; }
+    table { min-width: 0; font-size: 9.5px; }
+    thead th { position: static; }
+    .masthead { padding: 8px 0 20px; }
+    .reveal { animation: none !important; }
+    h1 { font-size: 30px; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="masthead reveal">
+    <div class="eyebrow"><span class="seal"></span> Inteligencia de licitación · Uso interno · Preparación de oferta</div>
+    <h1>Servicio Administrado de Centro de Datos SEP 2026&ndash;2027</h1>
+    <p class="dek">Análisis técnico a detalle, arquitectura de <strong>mínimo precio con 100% de cumplimiento</strong> y mapa de proveedores &amp; consorcio para la licitación que publicará la Secretaría de Educación Pública.</p>
+
+    <dl class="ficha">
+      <div><dt>Convocante</dt><dd>SEP · DGTIC</dd></div>
+      <div><dt>Modelo</dt><dd>Coubicación + operación 7×24</dd></div>
+      <div><dt>Sedes</dt><dd>Principal + DRP (espejo)</dd></div>
+      <div><dt>Criterio</dt><dd class="hot">BINARIO · precio más bajo</dd></div>
+      <div><dt>Inicio servicio</dt><dd>1 sep 2026</dd></div>
+      <div><dt>Vigencia</dt><dd>fallo → 31 dic 2027</dd></div>
+      <div><dt>Contrato</dt><dd>Abierto, plurianual</dd></div>
+      <div><dt>Fianza</dt><dd>10% del total</dd></div>
+    </dl>
+  </header>
+
+  <div class="verdict reveal">
+    <div class="tag">◆ Veredicto estratégico</div>
+    <p>Se gana por <span class="k">precio más bajo cumpliendo el 100%</span> — no hay puntos ni porcentajes: <strong>un solo requisito no acreditado descalifica</strong>. El patrón ganador es un <strong>consorcio</strong> (nadie cubre solo dos sedes Tier&nbsp;III/ICREA&nbsp;IV + legacy SPARC/Power/Informix + plantilla 55+). La palanca decisiva de costo es <strong>reutilizar al máximo la infraestructura propia de la SEP en el DRP</strong>. La incumbencia no gana por sí sola: en 2016 un retador venció a KIO por precio en un fallo binario.</p>
+  </div>
+
+  <!-- 01 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div><h2>Qué es esta licitación</h2><p>El objeto real y por qué es de alto riesgo y alto valor.</p></div>
+    </div>
+    <div class="sec-body">
+      <p class="lead">La SEP externaliza la <strong>operación de su plataforma crítica</strong> (nómina educativa, USICAMM, @prende, padrones) en un servicio administrado de coubicación sobre <strong>dos sedes espejo</strong>: un Centro de Datos <strong>Principal</strong> montado con equipo nuevo del licitante, y un <strong>DRP</strong> que se reactiva reutilizando hardware que la SEP ya posee. Todo se duplica en ambas sedes con replicación en tiempo real.</p>
+
+      <div class="kpis">
+        <div class="kpi"><div class="n">385</div><div class="l">Aplicativos</div></div>
+        <div class="kpi"><div class="n">454</div><div class="l">Máquinas virtuales</div></div>
+        <div class="kpi"><div class="n">~1,008</div><div class="l">Bases de datos</div></div>
+        <div class="kpi"><div class="n">11</div><div class="l">LPAR · Power/AIX</div></div>
+        <div class="kpi"><div class="n">7</div><div class="l">Procesos de nómina</div></div>
+        <div class="kpi"><div class="n">72</div><div class="l">Servidores en nube</div></div>
+        <div class="kpi"><div class="n">3,214<span class="u"> </span></div><div class="l">vCPU (VMs)</div></div>
+        <div class="kpi"><div class="n">~10.3<span class="u"> TB</span></div><div class="l">RAM agregada</div></div>
+        <div class="kpi"><div class="n">~242<span class="u"> TB</span></div><div class="l">Almacenamiento VMs</div></div>
+        <div class="kpi"><div class="n">700+700<span class="u"> TB</span></div><div class="l">SAN + respaldo usable</div></div>
+        <div class="kpi"><div class="n">2</div><div class="l">Sedes Tier III / ICREA IV</div></div>
+        <div class="kpi"><div class="n">99.99<span class="u">%</span></div><div class="l">SLA · 7×24</div></div>
+      </div>
+      <div class="kpi-note"><span class="dot a"></span> Toda esta volumetría <b>se duplica</b> en Principal + DRP: capacidad, licencias y operación, por dos.</div>
+
+      <div class="grid g3" style="margin-top:22px">
+        <div class="card"><h3><span class="dot a"></span>Se gana por precio</h3><p>Criterio binario: cumplir todo y ser el más barato. Toda la ingeniería debe bajar costo sin perder un solo requisito.</p></div>
+        <div class="card"><h3><span class="dot a"></span>Barreras altas → consorcio</h3><p>Certificaciones de sede + ISO + ~55 perfiles certificados en tecnologías escasas y simultáneas. Difícil para una sola empresa.</p></div>
+        <div class="card"><h3><span class="dot a"></span>Fechas que aprietan</h3><p>Anexo fechado 31/03/2026, arranque 1/sep/2026. Migrar la operación crítica en semanas es riesgo y diferenciador de costo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div><h2>Análisis técnico por dominio</h2><p>Volumetría, tecnología obligatoria y dónde está el riesgo real.</p></div>
+    </div>
+    <div class="sec-body">
+      <div class="grid g2">
+        <div class="card"><h3><span class="dot a"></span>Cómputo x86 · VMware</h3><p>Aquí está el mayor CAPEX del sitio Principal. VMware es obligatorio (Broadcom): la palanca es densidad de hosts y right-sizing.</p><div class="spec">454 VMs · 3,214 vCPU · ~10.3 TB RAM · ~242 TB · overcommit ≤3:1 CDP / ≤6:1 DRP</div></div>
+
+        <div class="card"><h3><span class="dot c"></span>SPARC · Solaris (RISC) <span class="chip critico" style="margin-left:auto">Riesgo mayor</span></h3><p>Pide equipo SPARC “nuevo ≤2 años” — casi inexistente (Oracle congeló el roadmap). En DRP se reactivan los SPARC T8-4 de la SEP.</p><div class="spec">67 servidores · 406 vCPU · ~2 TB RAM · Solaris 10/11</div></div>
+
+        <div class="card"><h3><span class="dot a"></span>IBM Power · AIX</h3><p>Sostiene las nóminas críticas con Oracle EE + RAC. En DRP se reactivan los Power E950/P9 de la SEP.</p><div class="spec">11 LPAR · 103 cores · ~3 TB RAM · ~318 TB SAN</div></div>
+
+        <div class="card"><h3><span class="dot c"></span>Bases de datos <span class="chip aclarar" style="margin-left:auto">Motores: los licencia la SEP</span></h3><p>Oracle EE/RAC, SQL Server (2012 EOL), MySQL/MariaDB (open source) e <b>Informix sobre Solaris</b> — el talento más escaso del país, concentra nómina y padrón sin HA.</p><div class="spec">~1,008 BD · multi-motor · modo ARCHIVELOG obligatorio</div></div>
+
+        <div class="card"><h3><span class="dot a"></span>Almacenamiento &amp; respaldo</h3><p>SAN all-NVMe gama alta, controladoras activo-activo simétricas (excluye ALUA). Software Commvault de facto. Regla 40/60 → comprar ~2.5×.</p><div class="spec">700 TB SAN + 700 TB respaldo usable · 0.05 ms · antes de dedupe</div></div>
+
+        <div class="card"><h3><span class="dot r"></span>Seguridad · 8 subsistemas HA</h3><p>Direccionamiento de facto a marca: F5/Radware, Imperva, Palo Alto/Fortinet, Infoblox, Trend Micro. ~12 appliances por sede.</p><div class="spec">ADC/WAF · DBF · NGFW/IPS/Sandbox · DDI/DNS · EDR/AV 450 endpoints · SIEM 100k EPS</div></div>
+
+        <div class="card"><h3><span class="dot a"></span>Nube pública · multinube</h3><p>Solo los 72 existentes; no migrar nada más. Cartas de partner AWS y Azure obligatorias (sin ellas, descalifica).</p><div class="spec">Azure @prende (9) + AWS USICAMM (63) · VPC dedicada · región T-MEC</div></div>
+
+        <div class="card"><h3><span class="dot a"></span>Red &amp; transversales</h3><p>Spine-leaf CLOS (líder Gartner + GB4943) con enlaces redundantes. Transversales: SOC 24×7, SIEM, Mesa ITIL v4, SSL.</p><div class="spec">Core 8 Tbps · Mesa: 9 personas, ~1,300 tickets/mes · ~74 certificados SSL</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div><h2>Niveles de servicio, penas y fechas</h2><p>El marco que castiga el incumplimiento y define el riesgo de margen.</p></div>
+    </div>
+    <div class="sec-body">
+      <div class="tbl-wrap" style="margin-bottom:18px">
+        <table>
+          <thead><tr><th>Servicio</th><th style="text-align:right">Disponibilidad</th><th>Deductiva</th></tr></thead>
+          <tbody>
+            <tr><td>Centro de Datos Principal / DRP</td><td class="sla">99.982%</td><td>5% por cada décima porcentual bajo el SLA</td></tr>
+            <tr><td>Procesamiento (RISC / x86 / SPARC / BD)</td><td class="sla">99.99%</td><td>5% por décima, sobre el servicio</td></tr>
+            <tr><td>Almacenamiento, respaldos y restauración</td><td class="sla">99.99%</td><td>5% por décima, facturación total</td></tr>
+            <tr><td>Seguridad informática (por cada servicio)</td><td class="sla">99.99%</td><td>5% por décima, por servicio</td></tr>
+            <tr><td>Red de área local</td><td class="sla">99.99%</td><td>5% por décima</td></tr>
+            <tr><td>Enlaces de comunicación dedicados</td><td class="sla">99.98%</td><td>5% por décima</td></tr>
+            <tr><td>Balanceo</td><td class="sla">99.95%</td><td>5% por décima</td></tr>
+            <tr><td>DNS · WSO2 · Entregables mensuales</td><td class="sla">100%</td><td>5% por día / por décima</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid g3">
+        <div class="card"><h3>Tiempos de respuesta 7×24</h3><p class="spec" style="border-top:none;padding-top:0">Ticket ≤ 5 min · Diagnóstico ≤ 1–2 h · Crítico ≤ 4 h · Alto ≤ 8 h · Medio ≤ 12 h · Bajo ≤ 24 h</p></div>
+        <div class="card"><h3>Tope de sanciones</h3><p>Deductivas + penas convencionales limitadas al <b>10% del monto máximo</b> = el importe de la fianza. Superarlo habilita la rescisión.</p></div>
+        <div class="card"><h3>Calendario</h3><p class="spec" style="border-top:none;padding-top:0">Anexo: 31/03/2026 · Entrega/arranque: 1/sep/2026 · Fin: 31/dic/2027 · + 3 meses de transición sin costo</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div><h2>Arquitectura de mínimo precio &amp; las 3 palancas</h2><p>Cumplir el 100% al literal, sin sobre-diseñar un solo peso.</p></div>
+    </div>
+    <div class="sec-body">
+      <div class="grid" style="gap:12px; margin-bottom:22px">
+        <div class="palanca"><div class="idx">Palanca 01 · mayor impacto</div><h3>El DRP se arma con el hardware que la SEP ya tiene</h3><p>SPARC T8-4, HPE SDFlex/Alletra/StoreOnce, Power E950, F5, Imperva, Fortinet, Aruba y CommVault son de la SEP. El licitante <b>no compra cómputo, almacenamiento, red ni seguridad para el DRP</b>: solo mudanza, reactivación, antiransomware, monitoreo, respaldo y enlaces. Diferencia de precio decisiva frente a quien cotice un DRP nuevo.</p></div>
+        <div class="palanca"><div class="idx">Palanca 02 · confirmar en junta</div><h3>Los motores de base de datos los licencia la SEP</h3><p>El pliego indica que la SEP provee las licencias de Oracle EE/RAC, SQL Server e Informix — el rubro más caro — en ambas sedes. Si se confirma, tu costo de licencia se reduce a SO + VMware + seguridad + herramientas.</p></div>
+        <div class="palanca"><div class="idx">Palanca 03 · el mayor amplificador</div><h3>Descifrar la regla 40/60</h3><p>“Recursos SEP = 40% del total, 60% para crecimiento” puede significar comprar ~2.5× la capacidad real. Aclarar si es capacidad <b>instalada</b> o <b>escalable</b> puede recortar millones de pesos del sitio Principal.</p></div>
+      </div>
+
+      <p class="lead"><strong>Open source donde ya lo es; propietario solo donde el inventario lo fija.</strong></p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Dominio</th><th>Decisión</th><th>Racional de costo</th></tr></thead>
+          <tbody>
+            <tr><td>MySQL / MariaDB / PostgreSQL</td><td><span class="chip palanca-c">Open source</span></td><td>Sin licencia; solo operación DBA</td></tr>
+            <tr><td>Monitoreo on-prem</td><td><span class="chip palanca-c">Open source empresarial</span></td><td>Zabbix/Grafana si la spec no fija marca</td></tr>
+            <tr><td>Oracle EE/RAC · SQL · Informix</td><td><span class="chip aclarar">Licenciado por la SEP</span></td><td>Fuera de tu cotización (confirmar)</td></tr>
+            <tr><td>VMware · SIEM · Commvault</td><td><span class="chip riesgo">Propietario obligatorio</span></td><td>Minimizar cores/EPS; estandarizar con el DRP</td></tr>
+            <tr><td>Seguridad (WAF/NGFW/DNS/EDR)</td><td><span class="chip riesgo">Propietario de facto</span></td><td>Reusar marcas del DRP (F5/Imperva/Fortinet)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div><h2>Estimación de costos (orientativa)</h2><p>Rango modelado por categoría para el término de ~16 meses. No sustituye la cotización de fabricantes.</p></div>
+    </div>
+    <div class="sec-body">
+      <div class="kpis" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+        <div class="kpi"><div class="n">$480–780<span class="u"> M</span></div><div class="l">Rango total · MXN sin IVA</div></div>
+        <div class="kpi"><div class="n">~$600<span class="u"> M</span></div><div class="l">Escenario base</div></div>
+        <div class="kpi"><div class="n">±35<span class="u">%</span></div><div class="l">Incertidumbre (ROM)</div></div>
+        <div class="kpi"><div class="n">16<span class="u"> meses</span></div><div class="l">sep 2026 – dic 2027</div></div>
+      </div>
+
+      <div class="tbl-wrap" style="margin-top:16px">
+        <table>
+          <thead><tr><th>Categoría</th><th>Naturaleza</th><th style="text-align:right">Rango (MXN)</th></tr></thead>
+          <tbody>
+            <tr><td>Coubicación 2 sedes (Tier III/ICREA IV, 2N)</td><td>OPEX recurrente</td><td class="num">$24–48 M</td></tr>
+            <tr><td>Cómputo x86 + VMware · sitio Principal nuevo</td><td>CAPEX (se dona)</td><td class="num">$25–55 M</td></tr>
+            <tr><td>Cómputo IBM Power · 11 LPAR · Principal</td><td>CAPEX (se dona)</td><td class="num">$20–45 M</td></tr>
+            <tr><td>Cómputo SPARC / Solaris · Principal</td><td>CAPEX (se dona)</td><td class="num">$10–25 M</td></tr>
+            <tr><td>Almacenamiento SAN 700 TB + respaldo 700 TB + Commvault</td><td>CAPEX (se dona)</td><td class="num">$45–95 M</td></tr>
+            <tr><td>Seguridad · 12 appliances/sede + EDR/AV + SIEM</td><td>Mixto</td><td class="num">$30–65 M</td></tr>
+            <tr><td>Red spine-leaf 8 Tbps + enlaces dedicados</td><td>Mixto</td><td class="num">$20–40 M</td></tr>
+            <tr><td>Software (SO, VMware, SIEM, WSO2) — motores BD por la SEP</td><td>OPEX recurrente</td><td class="num">$40–80 M</td></tr>
+            <tr><td>Nube AWS + Azure · 72 servidores</td><td>OPEX recurrente</td><td class="num">$16–32 M</td></tr>
+            <tr><td>Reutilización DRP (mudanza, reactivación, soporte, bóveda)</td><td>Único + OPEX</td><td class="num">$15–35 M</td></tr>
+            <tr><td>Plantilla 55+ certificada 7×24 + SOC + Mesa ITIL</td><td>OPEX recurrente</td><td class="num">$90–140 M</td></tr>
+            <tr><td>Servicios profesionales · migración / transición</td><td>Único</td><td class="num">$12–28 M</td></tr>
+            <tr><td>Fianza, financieros, contingencia y margen</td><td>≈ 10–15%</td><td class="num">incluido</td></tr>
+            <tr class="total"><td>Total orientativo · 16 meses · sin IVA</td><td>Redondeado</td><td class="num">$480–780 M</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid g2" style="margin-top:16px">
+        <div class="card" style="border-left:4px solid var(--lever)"><h3><span class="dot l"></span>Empuja el precio a la baja</h3><p>Reutilizar todo el parque de la SEP en el DRP · confirmar que la SEP licencia los motores de BD (ahorro potencial ~$50–120 M) · leer la regla 40/60 como capacidad escalable, no 2.5× instalada · estandarizar marcas CDP=DRP · cotizar cada mínimo al literal.</p></div>
+        <div class="card" style="border-left:4px solid var(--risk)"><h3><span class="dot r"></span>Empuja el precio al alza</h3><p>Regla 40/60 interpretada como 2.5× instalada (puede sumar +$120–180 M) · SPARC/Power nuevos escasos y caros · storage all-NVMe gama alta · donación de hardware sin valor residual · soporte extendido de SO/motores EOL · deductivas y penas (tope 10% = fianza).</p></div>
+      </div>
+
+      <p class="lead" style="margin-top:16px; font-size:13px; color:var(--muted); max-width:78ch">Estimación <strong>modelada</strong> a partir de la volumetría del Anexo Técnico y supuestos de mercado (México, 2026); no incluye IVA y <strong>no sustituye</strong> cotizaciones de fabricante. Los dos factores que más mueven el total son la interpretación de la <strong>regla 40/60</strong> y si la <strong>SEP licencia los motores de base de datos</strong>. Rango de incertidumbre ≈ ±35%.</p>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div><h2>Preguntas críticas para la junta de aclaraciones</h2><p>No es un trámite: cada respuesta mueve el precio o evita una descalificación.</p></div>
+    </div>
+    <div class="sec-body">
+      <ol class="q">
+        <li><b>Regla 40/60:</b> ¿capacidad instalada 2.5× o capacidad escalable a +60% sin cambiar hardware? <span class="impact">— impacto máximo</span></li>
+        <li><b>Licencias de motores de BD:</b> confirmar que la SEP aporta Oracle EE/RAC, SQL Server e Informix en <b>ambas</b> sedes.</li>
+        <li><b>Marca de seguridad en el Principal:</b> ¿se aceptan las mismas familias que la SEP ya posee en DRP (F5 + Imperva + Fortinet) en vez de Palo Alto/Infoblox?</li>
+        <li><b>SPARC “nuevo ≤2 años”:</b> ¿se acepta Fujitsu SPARC M12 o equivalencia con soporte Oracle Premier? Si no, es riesgo de descalificación para todos.</li>
+        <li><b>Inventario:</b> cifra oficial de BD (1,008 vs 1,018), unidades de RAM (MB vs GB) y tamaños anómalos (MariaDB &gt;1 PB) para dimensionar sin sobre/sub-cotizar.</li>
+        <li><b>Commvault:</b> ¿obligatorio para recuperar respaldos históricos? El DRP ya usa CommVault → estandarizar evita incompatibilidad.</li>
+        <li><b>SQL Server 2012 (EOL) y 2017 Developer en producción:</b> ¿ESU y regularización de licencia a cargo de quién? Riesgo legal e ISO 27001.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div><h2>Proveedores que cumplen &amp; estructura de consorcio</h2><p>Quién aporta cada certificación y capacidad — y cómo armar el equipo ganador.</p></div>
+    </div>
+    <div class="sec-body">
+      <div class="tbl-wrap" style="margin-bottom:20px">
+        <table>
+          <thead><tr><th>Capa</th><th>Candidatos concretos</th><th>Qué aportan</th></tr></thead>
+          <tbody>
+            <tr><td class="who">Coubicación Tier III / ICREA IV</td><td>Triara (Telmex), KIO, Alestra/Axtel, HostDime GDL</td><td>Principal en CDMX + DRP en QRO/GDL (≥50 km), ISO 9001/20000-1</td></tr>
+            <tr><td class="who">Legacy Power / AIX</td><td>GBM, Redsis, CompuSoluciones</td><td>Operación de LPAR, HMC/PowerVM, soporte IBM TSS back-to-back</td></tr>
+            <tr><td class="who">Informix / Solaris <span class="chip critico">cuello de botella</span></td><td>Deister Software (MX), SIXE</td><td>La tecnología con menos oferentes del país; sin ella se descalifica</td></tr>
+            <tr><td class="who">Oracle RAC / DBAs</td><td>SPS Solutions, GTIM</td><td>DBAs Oracle + RAC sobre AIX; cartas Oracle Premier</td></tr>
+            <tr><td class="who">Almacenamiento / respaldo</td><td>HPE + Commvault (partner MX)</td><td>Alinea con el parque del DRP; SAN gama alta no-ALUA</td></tr>
+            <tr><td class="who">SOC / SIEM (ISO 27001)</td><td>Scitum (Carso), Ikusi, A2Secure</td><td>SOC 24×7, CSIRT, cumple asignación ≤5 min / crítico ≤4 h</td></tr>
+            <tr><td class="who">Nube AWS + Azure</td><td>Nubity (AWS Premier), Northware / Cloud Continuity (Azure)</td><td>Cartas de partner activo — requisito de calificación</td></tr>
+            <tr><td class="who">Integrador · Mesa ITIL · plantilla 55+</td><td>Softtek, HITSS, GBM, Mainbit</td><td>Acredita la plantilla certificada — el verdadero cuello de botella</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cons">
+        <div class="card win">
+          <div class="rank">◆ Recomendado para ganar</div>
+          <h3>Retador por precio</h3>
+          <ul>
+            <li><b>Líder</b> Softtek (integrador de escala + plantilla 55+ + mesa ITIL)</li>
+            <li><b>Sedes</b> Alestra/KIO + HostDime GDL (DRP)</li>
+            <li><b>SOC</b> Ikusi o A2Secure</li>
+            <li><b>Legacy</b> GBM + Deister + SPS/GTIM</li>
+            <li><b>Nube</b> Nubity + Northware</li>
+          </ul>
+          <div class="note">Replica el precedente CURP-2016: un retador venció al incumbente por precio. Máxima reutilización del hardware SEP en el DRP.</div>
+        </div>
+        <div class="card">
+          <div class="rank">Competidor a batir</div>
+          <h3>América Móvil integral</h3>
+          <ul>
+            <li><b>Líder</b> Triara (coubicación Principal + DRP)</li>
+            <li><b>SOC</b> Scitum (ISO 27001/27002)</li>
+            <li><b>Integra</b> HITSS (x86/VMware/DBAs/ITIL)</li>
+            <li><b>Legacy</b> Deister + GBM/Redsis + SPS/GTIM</li>
+          </ul>
+          <div class="note">El más robusto en cumplimiento documental; fija el precio techo. Control corporativo común reduce huecos de certificación.</div>
+        </div>
+        <div class="card">
+          <div class="rank">Máximo blindaje técnico</div>
+          <h3>DC + integrador legacy</h3>
+          <ul>
+            <li><b>Líder</b> KIO Networks (multi-sitio)</li>
+            <li><b>Legacy</b> GBM co-líder + Deister + Oracle Premier</li>
+            <li><b>SOC</b> Scitum o Ikusi</li>
+            <li><b>Nube</b> Nubity + Cloud Continuity</li>
+          </ul>
+          <div class="note">Mínimo riesgo técnico en el legacy, pero riesgo reputacional de KIO y precio potencialmente más alto: en binario la incumbencia no gana sola.</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px; border-left:4px solid var(--accent)">
+        <h3><span class="dot a"></span>Piezas no negociables en cualquier estructura</h3>
+        <p>Deister (Informix) · cartas de soporte IBM y Oracle · Commvault · partner AWS y Azure con carta vigente · un integrador que acredite la plantilla 55+. En binario, una constancia vencida descalifica: verificar folio y vigencia de cada certificación <b>antes</b> de ofertar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">08</div>
+      <div><h2>Matriz de cumplimiento</h2><p>Requisito por requisito: exigencia del pliego, cómo se cubre y estado.</p></div>
+    </div>
+    <div class="sec-body">
+      <div class="legend">
+        <span class="chip palanca-c">Cubierto</span>
+        <span class="chip aclarar">Vía consorcio</span>
+        <span class="chip riesgo">Por aclarar</span>
+        <span class="chip critico">Riesgo alto</span>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Requisito</th><th>Exigencia del pliego</th><th>Cómo se cubre / responsable</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="who">Sedes Principal + DRP</td><td>Tier III o ICREA IV+ · ISO 9001 · 20000-1 · ≥50 km · 2N</td><td>Operador colo (Triara / KIO / Alestra), carta vigente por sede</td><td><span class="chip aclarar">Vía consorcio</span></td></tr>
+            <tr><td class="who">Cómputo x86 / VMware</td><td>454 VMs @ ≤3:1 · VMware obligatorio</td><td>Hosts densos nuevos (CDP) + SDFlex de la SEP (DRP)</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">Cómputo Power / AIX</td><td>11 LPAR · Oracle EE + RAC</td><td>Power nuevo (CDP) + E950 de la SEP (DRP) · GBM / Redsis</td><td><span class="chip aclarar">Vía consorcio</span></td></tr>
+            <tr><td class="who">Cómputo SPARC / Solaris</td><td>equipo “nuevo ≤ 2 años”</td><td>Fujitsu M12 / equivalencia + T8-4 de la SEP (DRP)</td><td><span class="chip riesgo">Por aclarar</span></td></tr>
+            <tr><td class="who">Bases de datos</td><td>~1,008 BD multi-motor · Informix · Oracle RAC</td><td>DBAs de nicho: Deister (Informix) + SPS / GTIM (Oracle)</td><td><span class="chip critico">Riesgo alto</span></td></tr>
+            <tr><td class="who">Licencia de motores BD</td><td>Oracle / SQL / Informix</td><td>La SEP los provee — confirmar en junta</td><td><span class="chip riesgo">Por aclarar</span></td></tr>
+            <tr><td class="who">Almacenamiento SAN</td><td>700 TB all-NVMe · activo-activo simétrico (no ALUA) · 0.05 ms</td><td>Array gama alta (HPE Alletra / Dell PowerMax / Hitachi)</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">Respaldo</td><td>700 TB usable + software + bóveda externa</td><td>Commvault (estándar del DRP) + operador de bóveda</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">Regla 40/60</td><td>recursos SEP = 40% del total</td><td>Diseño escalable — aclarar 2.5× instalado vs headroom</td><td><span class="chip riesgo">Por aclarar</span></td></tr>
+            <tr><td class="who">WAF + Firewall de BD</td><td>perfil Imperva</td><td>Imperva (ya en el DRP de la SEP) vía partner</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">NGFW / IPS / Sandbox</td><td>perfil Palo Alto</td><td>Palo Alto (CDP) / Fortinet de la SEP (DRP)</td><td><span class="chip aclarar">Vía consorcio</span></td></tr>
+            <tr><td class="who">DNS / DDI</td><td>perfil Infoblox (ThreatAdapt, RPZ)</td><td>Infoblox vía partner</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">EDR / Antiransomware</td><td>Líder Gartner + MITRE Turla &gt;98%</td><td>Cortex XDR / CrowdStrike / SentinelOne</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">Antivirus 450 endpoints</td><td>Solaris + Docker</td><td>Trend Micro Deep Security</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">SIEM</td><td>100,000 EPS · base de datos propietaria</td><td>Perfil QRadar (appliance HW)</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">SOC 24×7</td><td>ISO 27001 / 27002</td><td>Scitum / Ikusi / A2Secure</td><td><span class="chip aclarar">Vía consorcio</span></td></tr>
+            <tr><td class="who">Nube AWS + Azure</td><td>72 servidores · cartas de partner vigentes</td><td>Nubity (AWS) + Northware / Cloud Continuity (Azure)</td><td><span class="chip aclarar">Vía consorcio</span></td></tr>
+            <tr><td class="who">Red LAN</td><td>spine-leaf 8 Tbps · líder Gartner + GB4943</td><td>Huawei / HPE (CDP) + Aruba de la SEP (DRP)</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">Enlaces dedicados</td><td>5 en CDP + 4 en DRP, redundantes</td><td>Carrier del operador de colocación</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">Mesa de servicios</td><td>ITIL v4 · herramienta certificada · 9 personas</td><td>Integrador (Softtek / HITSS)</td><td><span class="chip aclarar">Vía consorcio</span></td></tr>
+            <tr><td class="who">Certificados SSL</td><td>~74 EV + wildcard (+10%)</td><td>Servicio administrado con CA reconocida</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">Borrado seguro</td><td>HDD / SSD / NVMe · método patentado</td><td>Perfil Blancco, por evento, ambas sedes</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+            <tr><td class="who">Plantilla 55+</td><td>certificaciones vigentes + IMSS + 7×24</td><td>Integrador + especialistas de nicho</td><td><span class="chip critico">Riesgo alto</span></td></tr>
+            <tr><td class="who">Empresa licitante</td><td>≥ 5 años de experiencia · fianza 10%</td><td>Líder del consorcio con solvencia financiera</td><td><span class="chip palanca-c">Cubierto</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lead" style="margin-top:14px; font-size:13px; color:var(--muted)">Los dos <strong>riesgos altos</strong> (talento Informix/SPARC y plantilla 55+) y los cuatro <strong>“por aclarar”</strong> concentran el peligro de descalificación. Todo lo marcado <strong>“vía consorcio”</strong> exige carta/certificado vigente del socio antes de ofertar.</p>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">09</div>
+      <div><h2>Barreras de calificación</h2><p>Lo que hay que acreditar sí o sí para no ser desechado.</p></div>
+    </div>
+    <div class="sec-body">
+      <div class="barreras">
+        <div class="barrera"><div class="h">Certificaciones de sede</div><ul><li>Tier III o ICREA IV+ (Principal <b>y</b> DRP)</li><li>ISO 9001</li><li>ISO/IEC 20000-1:2018</li></ul></div>
+        <div class="barrera"><div class="h">Seguridad &amp; nube</div><ul><li>SOC: ISO 27001 / 27002</li><li>Nube: ISO 27017 / 27018</li><li>NMX-R-025-SCFI-2015 (igualdad laboral)</li></ul></div>
+        <div class="barrera"><div class="h">Plantilla ~55+ certificada</div><ul><li>AIX · Solaris/SPARC · Power · VMware</li><li>DBAs Oracle+RAC / SQL / MySQL / Informix / PostgreSQL</li><li>AWS + Azure · CKA · ITIL v4 · PMP · ISO 22301</li></ul></div>
+        <div class="barrera"><div class="h">Empresa</div><ul><li>≥ 5 años de experiencia (o el representante, en consorcio)</li><li>Fianza 10% del contrato</li><li>Cotización por precios unitarios en periodos de 6 meses (MXN sin IVA)</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section style="border-bottom:none">
+    <div class="sec-head">
+      <div class="sec-num">10</div>
+      <div><h2>Riesgos y descalificadores</h2><p>Dónde se pierde la licitación — o el margen.</p></div>
+    </div>
+    <div class="sec-body">
+      <div class="riskrow"><span class="chip critico">Descalifica</span><div class="body"><b>Direccionamiento a marca</b><span>Commvault, Palo Alto, Infoblox, Imperva, F5/Radware, Trend Micro, SIEM tipo QRadar. Un requisito propietario no cumplido desecha la propuesta; a la vez, es riesgo de impugnación.</span></div></div>
+      <div class="riskrow"><span class="chip critico">Descalifica</span><div class="body"><b>Talento escaso: Informix y SPARC/Solaris</b><span>Concentra nómina y padrón. No acreditar el perfil certificado descalifica en esquema binario. Blindar con Deister (Informix) y GBM + cartas Oracle.</span></div></div>
+      <div class="riskrow"><span class="chip riesgo">Encarece</span><div class="body"><b>Legacy en fin de vida</b><span>Windows Server 2003, RHEL 4/5/6, CentOS, Solaris 10, Ubuntu 18.04 EOL, SQL Server 2012. Soporte extendido y tensión con ISO 27001.</span></div></div>
+      <div class="riskrow"><span class="chip riesgo">Encarece</span><div class="body"><b>Duplicación + sobre-dimensionamiento + donación</b><span>Todo por dos sedes, regla 40/60 (~2.5×) sobre hardware nuevo de alta gama que se dona a la SEP sin valor residual: el CAPEX se absorbe íntegro.</span></div></div>
+      <div class="riskrow"><span class="chip aclarar">Aclarar</span><div class="body"><b>Discrepancias de inventario</b><span>454 vs 421 VMs · 1,008 vs 1,018 BD · RAM en MB/GB mezclados · tamaños de BD imposibles · contradicción del firewall de BD “sin agentes”. Resolver en junta.</span></div></div>
+      <div class="riskrow"><span class="chip aclarar">Vigilar</span><div class="body"><b>Equipo retirado sin hardening &amp; alcance abierto</b><span>El parque del DRP se entrega “en su última configuración estable” (riesgo de fallo/refacciones). Cláusulas “enunciativo mas no limitativo” y “sin costo adicional”: scope creep no repercutible.</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand">Licita<span>IA</span></div>
+    <p class="disc">Informe de inteligencia de licitación · Generado a partir del Anexo Técnico (≈143,600 palabras) · Análisis orientativo asistido por IA.<br>Confirmar toda cifra, certificación y condición contra los pliegos oficiales y la junta de aclaraciones antes de decidir la oferta.</p>
+  </footer>
+</div>
