@@ -42,3 +42,32 @@ export const AnalisisLicitacionSchema = z.object({
 });
 
 export type AnalisisLicitacion = z.infer<typeof AnalisisLicitacionSchema>;
+
+/**
+ * Resultado de comparar varias licitaciones: recomendación de a cuál
+ * presentarse, ranking justificado y factores diferenciadores.
+ */
+export const ComparativaSchema = z.object({
+  mejorOpcion: z
+    .string()
+    .describe("Título exacto de la licitación recomendada"),
+  justificacion: z
+    .string()
+    .describe("Por qué es la mejor opción, en 2-3 frases"),
+  ranking: z
+    .array(
+      z.object({
+        titulo: z.string().describe("Título de la licitación"),
+        posicion: z.number().describe("Posición en el ranking (1 = mejor)"),
+        valoracion: z
+          .string()
+          .describe("Puntos fuertes y débiles frente a las demás"),
+      }),
+    )
+    .describe("Todas las licitaciones ordenadas de mejor a peor opción"),
+  factoresClave: z
+    .array(z.string())
+    .describe("Factores diferenciadores más relevantes para decidir"),
+});
+
+export type Comparativa = z.infer<typeof ComparativaSchema>;

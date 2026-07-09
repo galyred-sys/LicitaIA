@@ -2,6 +2,7 @@
 
 import { useRef, useState, useSyncExternalStore } from "react";
 import { ResultadoAnalisis } from "@/components/ResultadoAnalisis";
+import { ComparativaLicitaciones } from "@/components/ComparativaLicitaciones";
 import { HistorialPanel } from "@/components/HistorialPanel";
 import {
   eliminarDelHistorial,
@@ -21,6 +22,10 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [aviso, setAviso] = useState<string | null>(null);
   const [analisis, setAnalisis] = useState<AnalisisLicitacion | null>(null);
+  const [seleccionados, setSeleccionados] = useState<string[]>([]);
+  const [comparando, setComparando] = useState<AnalisisLicitacion[] | null>(
+    null,
+  );
   const historial = useSyncExternalStore(
     subscribeHistorial,
     getSnapshotHistorial,
@@ -94,10 +99,28 @@ export default function Home() {
 
   function eliminarEntrada(id: string) {
     eliminarDelHistorial(id);
+    setSeleccionados((s) => s.filter((x) => x !== id));
   }
 
   function vaciarHistorial() {
     limpiarHistorial();
+    setSeleccionados([]);
+    setComparando(null);
+  }
+
+  function alternarSeleccion(id: string) {
+    setSeleccionados((s) =>
+      s.includes(id) ? s.filter((x) => x !== id) : [...s, id],
+    );
+  }
+
+  function compararSeleccionadas() {
+    const elegidas = seleccionados
+      .map((id) => historial.find((e) => e.id === id)?.analisis)
+      .filter((a): a is AnalisisLicitacion => Boolean(a));
+    if (elegidas.length < 2) return;
+    setComparando(elegidas);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (
@@ -173,11 +196,21 @@ export default function Home() {
         </p>
       )}
 
+      {comparando && (
+        <ComparativaLicitaciones
+          analisis={comparando}
+          onCerrar={() => setComparando(null)}
+        />
+      )}
+
       {analisis && <ResultadoAnalisis analisis={analisis} />}
 
       <HistorialPanel
         entradas={historial}
+        seleccionados={seleccionados}
         onSeleccionar={seleccionarDelHistorial}
+        onAlternarSeleccion={alternarSeleccion}
+        onComparar={compararSeleccionadas}
         onEliminar={eliminarEntrada}
         onLimpiar={vaciarHistorial}
       />
