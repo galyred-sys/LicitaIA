@@ -14,6 +14,10 @@ Análisis y documentos de trabajo para la licitación **"Servicio Administrado d
 | `Modelo_Costeo.csv` | Modelo de costeo detallado por partida (**editable en Excel**): cantidades, costo unitario supuesto, periodos, subtotales bajo/alto y notas. |
 | `Modelo_Costeo.md` / `.pdf` | Resumen del modelo de costeo: bloques, total orientativo (~$480–780 M MXN), factores de swing y palancas de precio. |
 | `Checklist_Documentos.md` / `.pdf` | Checklist de documentos a reunir para no ser desechado, agrupado por tipo, con marca de los que causan desechamiento. |
+| `Propuesta_Economica_Template.csv` | Plantilla de cotización por precios unitarios semestrales (**editable en Excel**): base mensual, periodos 1/2/3 y total. |
+| `Propuesta_Economica.md` / `.pdf` | Estructura de la propuesta económica: periodos de facturación, resumen por partida y notas de cotización. |
+| `Plan_Migracion.md` / `.pdf` | Plan de migración/transición hacia el 1/sep/2026: fases, camino crítico, corte por criticidad, riesgos e hitos. |
+| `Plantilla_Organigrama.md` / `.pdf` | Plantilla ~55+ y organigrama del consorcio: roles, cantidades, certificaciones y socio asignado. |
 
 ## Avisos
 

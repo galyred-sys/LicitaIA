@@ -1,0 +1,19 @@
+Partida,Concepto,Naturaleza,Base mensual ref (MXN),Periodo 1 - 6m (MXN),Periodo 2 - 6m (MXN),Periodo 3 - 4m (MXN),Total 16m (MXN),Notas / a definir por el consorcio
+1 Transversales,Plantilla certificada 7x24 (~55-60 FTE),Recurrente,5100000,30600000,30600000,20400000,81600000,Precio unitario mensual a definir; incluye SOC/DBAs/admins/mesa
+1 Transversales,SOC + SIEM administrado,Recurrente,800000,4800000,4800000,3200000,12800000,Perfil QRadar 100k EPS
+1 Transversales,Certificados SSL + borrado seguro + herramientas mesa,Recurrente,200000,1200000,1200000,800000,3200000,SSL EV/wildcard + Blancco + ITSM
+2 CD Principal,Coubicacion CDP (Tier III/ICREA IV, 2N),Recurrente,1200000,7200000,7200000,4800000,19200000,Operador de colocacion CDMX
+2 CD Principal,Software y licencias (SO, VMware, SIEM, WSO2),Recurrente,2500000,15000000,15000000,10000000,40000000,Motores de BD por la SEP (confirmar en junta)
+2 CD Principal,Enlaces dedicados CDP (5),Recurrente,300000,1800000,1800000,1200000,4800000,Carrier del operador
+3 CD DRP,Coubicacion DRP (Tier III/ICREA IV),Recurrente,700000,4200000,4200000,2800000,11200000,Ideal en Queretaro (equipo SEP)
+3 CD DRP,Enlaces dedicados DRP (4, incl. L2L),Recurrente,250000,1500000,1500000,1000000,4000000,Incluye L2L al Principal
+3 CD DRP,Soporte de fabricante back-to-back (IBM/Oracle/HPE),Recurrente,750000,4500000,4500000,3000000,12000000,Sostenibilidad del legacy reactivado
+1-3 Nube,Nube AWS + Azure (72 servidores),Recurrente,1300000,7800000,7800000,5200000,20800000,Solo los 72 existentes
+1-3 Servicios,Boveda externa (custodia + transporte),Recurrente,150000,900000,900000,600000,2400000,>20 km
+SUBTOTAL RECURRENTE,Servicios mensuales x periodo,Recurrente,13250000,79500000,79500000,53000000,212000000,Suma de recurrentes
+IMPLEMENTACION,Aprovisionamiento hardware CDP (computo/almacen/seguridad/red - se dona),Unica (Periodo 1),0,226000000,0,0,226000000,x86+Power+SPARC+SAN+respaldo+seguridad+red
+IMPLEMENTACION,Migracion/transicion + reactivacion equipo SEP en DRP,Unica (Periodo 1),0,40000000,0,0,40000000,Mudanza Queretaro + puesta en produccion hacia 1/sep/2026
+SUBTOTAL UNICA,Implementacion (Periodo 1),Unica,0,266000000,0,0,266000000,Se factura al inicio o se amortiza (definir)
+TOTAL,Suma antes de contingencia/margen,,,345500000,79500000,53000000,478000000,Escenario de referencia (bajo)
+TOTAL,Contingencia + margen (~12%),,,,,,,57000000,Sobre subtotal - distribuir
+TOTAL,TOTAL ORIENTATIVO (16 meses, sin IVA),,,,,,,535000000,Referencia; base ROM ~600 M; rango 480-780 M
