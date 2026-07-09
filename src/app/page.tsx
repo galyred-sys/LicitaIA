@@ -1,7 +1,17 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
 import { ResultadoAnalisis } from "@/components/ResultadoAnalisis";
+import { HistorialPanel } from "@/components/HistorialPanel";
+import {
+  eliminarDelHistorial,
+  getServerSnapshotHistorial,
+  getSnapshotHistorial,
+  guardarEnHistorial,
+  limpiarHistorial,
+  subscribeHistorial,
+  type EntradaHistorial,
+} from "@/lib/historial";
 import type { AnalisisLicitacion } from "@/lib/tipos";
 
 export default function Home() {
@@ -11,6 +21,11 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [aviso, setAviso] = useState<string | null>(null);
   const [analisis, setAnalisis] = useState<AnalisisLicitacion | null>(null);
+  const historial = useSyncExternalStore(
+    subscribeHistorial,
+    getSnapshotHistorial,
+    getServerSnapshotHistorial,
+  );
   const inputArchivo = useRef<HTMLInputElement>(null);
 
   async function subirPdf(archivo: File) {
@@ -62,11 +77,27 @@ export default function Home() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Error al analizar.");
       setAnalisis(data.analisis);
+      guardarEnHistorial(data.analisis);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Error inesperado.");
     } finally {
       setCargando(false);
     }
+  }
+
+  function seleccionarDelHistorial(entrada: EntradaHistorial) {
+    setAnalisis(entrada.analisis);
+    setError(null);
+    setAviso(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function eliminarEntrada(id: string) {
+    eliminarDelHistorial(id);
+  }
+
+  function vaciarHistorial() {
+    limpiarHistorial();
   }
 
   return (
@@ -143,6 +174,13 @@ export default function Home() {
       )}
 
       {analisis && <ResultadoAnalisis analisis={analisis} />}
+
+      <HistorialPanel
+        entradas={historial}
+        onSeleccionar={seleccionarDelHistorial}
+        onEliminar={eliminarEntrada}
+        onLimpiar={vaciarHistorial}
+      />
 
       <footer className="mt-16 border-t border-white/10 pt-6 text-center text-xs text-white/30">
         LicitaIA · Análisis orientativo generado con IA. Verifica siempre los
