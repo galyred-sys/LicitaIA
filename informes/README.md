@@ -10,6 +10,10 @@ Análisis y documentos de trabajo para la licitación **"Servicio Administrado d
 | `Informe_Licitacion_SEP_2026-2027.pdf` | Versión PDF (12 págs.) del informe anterior. |
 | `Preguntas_Junta_Aclaraciones.md` | 42 preguntas para la junta de aclaraciones, agrupadas por área, con referencia al Anexo y notas internas de estrategia. Editable. |
 | `Preguntas_Junta_Aclaraciones.pdf` | Versión PDF con formato del documento de preguntas. |
+| `Matriz_Cumplimiento.md` / `.pdf` | Matriz de cumplimiento línea por línea (67 renglones) para adjuntar a la propuesta técnica: referencia al Anexo, "Cumple = SÍ", solución/responsable interno y columna de folio a rellenar. |
+| `Modelo_Costeo.csv` | Modelo de costeo detallado por partida (**editable en Excel**): cantidades, costo unitario supuesto, periodos, subtotales bajo/alto y notas. |
+| `Modelo_Costeo.md` / `.pdf` | Resumen del modelo de costeo: bloques, total orientativo (~$480–780 M MXN), factores de swing y palancas de precio. |
+| `Checklist_Documentos.md` / `.pdf` | Checklist de documentos a reunir para no ser desechado, agrupado por tipo, con marca de los que causan desechamiento. |
 
 ## Avisos
 

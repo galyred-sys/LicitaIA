@@ -1,0 +1,28 @@
+Partida,Concepto,Sede,Naturaleza,Cantidad,Unidad,Costo unitario supuesto (MXN),Periodos/Meses,Subtotal BAJO (MXN),Subtotal ALTO (MXN),Notas / supuesto
+Transversales,Plantilla certificada 7x24 (~55-60 FTE),Ambas,OPEX,60,FTE-mes,85000,16,67200000,96000000,"Costo cargado 70-100k/FTE; incluye SOC, DBAs, admins, mesa"
+Transversales,SOC + SIEM administrado (servicio),Ambas,OPEX,1,servicio-mes,800000,16,10000000,16000000,"Perfil QRadar 100k EPS; puede ir dentro de plantilla"
+Transversales,Mesa de Servicios (herramienta ITIL v4 + licencias),Ambas,OPEX,1,servicio,3000000,1,2000000,4500000,Software certificado + operacion
+Transversales,Certificados SSL EV/wildcard (~74 +10%),Ambas,OPEX,80,certificado,9000,1,600000,1000000,CA reconocida
+Transversales,Borrado seguro (por evento),Ambas,OPEX,1,servicio,1500000,1,1000000,2500000,Perfil Blancco
+CD Principal,Coubicacion CDP (racks/energia 2N/clima/multi-ISP),Principal,OPEX,1,mes,1200000,16,16000000,28000000,Operador Tier III/ICREA IV CDMX
+CD Principal,Computo x86 + VMware (hosts densos, 454 VMs @3:1),Principal,CAPEX donado,1,solucion,40000000,1,25000000,55000000,"Xeon Gold/Platinum; VMware Broadcom por core"
+CD Principal,Computo IBM Power (11 LPAR consolidadas + PowerVM/HMC + AIX),Principal,CAPEX donado,1,solucion,32000000,1,20000000,45000000,Motores Oracle licenciados por SEP (confirmar)
+CD Principal,Computo SPARC/Solaris (67 hosts + LDoms),Principal,CAPEX donado,1,solucion,17000000,1,10000000,25000000,Fujitsu M12/equivalencia; riesgo de disponibilidad
+CD Principal,SAN all-NVMe 700 TB usables (gama alta),Principal,CAPEX donado,1,solucion,45000000,1,30000000,60000000,"No ALUA; >=2 TB cache; 0.05 ms; medido antes de dedupe"
+CD Principal,Respaldo a disco 700 TB + software Commvault,Principal,CAPEX donado,1,solucion,25000000,1,15000000,40000000,Estandarizar con DRP (CommVault SEP)
+CD Principal,Seguridad (12 appliances HA + EDR/AV 450 endpoints + suscripciones),Principal,Mixto,1,solucion,45000000,1,30000000,65000000,"F5/Imperva/Palo Alto/Infoblox/Trend; consola por sitio"
+CD Principal,Red spine-leaf 8 Tbps (core+leaf),Principal,CAPEX donado,1,solucion,22000000,1,15000000,32000000,Huawei/HPE (Gartner+GB4943)
+CD Principal,Enlaces dedicados CDP (5),Principal,OPEX,1,mes,300000,16,4000000,8000000,Carrier del operador colo
+CD Principal,Software (SO, VMware sub, SIEM, WSO2, herramientas),Principal,OPEX,1,term,55000000,1,40000000,80000000,Motores BD (Oracle/SQL/Informix) por SEP -> excluidos
+CD DRP,Coubicacion DRP (8 gabinetes 26U, 2N),DRP,OPEX,1,mes,700000,16,8000000,16000000,Ideal en Queretaro (equipo SEP)
+CD DRP,Reactivacion equipo propio SEP (SPARC T8-4, Power E950, SDFlex, storage),DRP,Unico,1,servicio,8000000,1,5000000,14000000,Mudanza + reactivacion + hardening
+CD DRP,Antiransomware/EDR nuevo + respaldo a disco >=35 TB,DRP,Mixto,1,solucion,7000000,1,5000000,12000000,Unicos elementos nuevos obligados
+CD DRP,Enlaces dedicados DRP (4, incl. L2L),DRP,OPEX,1,mes,250000,16,3000000,6000000,Incluye L2L a Principal
+CD DRP,Soporte de fabricante back-to-back (IBM TSS, Oracle Premier, HPE),DRP,OPEX,1,term,12000000,1,8000000,18000000,Sostenibilidad del legacy reactivado
+Nube,Nube AWS USICAMM (63 VMs) + Azure @prende (9 VMs),Ambas,OPEX,1,mes,1300000,16,16000000,32000000,VPC dedicada; region T-MEC; solo los 72 existentes
+Servicios,Boveda externa (custodia + transporte, ~2000-4500 cintas),Ambas,OPEX,1,mes,150000,16,2000000,4000000,>20 km
+Servicios,Migracion/transicion (454 VMs, 11 LPAR, ~1008 BD, equipo pivote),Ambas,Unico,1,proyecto,18000000,1,12000000,28000000,Hacia 1/sep/2026
+Financiero,"Fianza 10%, financieros, contingencia y margen",Ambas,%,1,global,0,1,0,0,"Incluido ~10-15% sobre subtotal; ver total"
+TOTAL,SUBTOTAL antes de contingencia/margen,,,,,,,,347800000,687500000,Suma de subtotales
+TOTAL,Contingencia + margen (~12%),,,,,,,,42000000,82000000,Sobre subtotal
+TOTAL,TOTAL ORIENTATIVO (16 meses, sin IVA),,,,,,,,480000000,780000000,ROM +/-35%; base ~600 M
