@@ -1,14 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ResultadoAnalisis } from "@/components/ResultadoAnalisis";
 import type { AnalisisLicitacion } from "@/lib/tipos";
 
 export default function Home() {
   const [texto, setTexto] = useState("");
   const [cargando, setCargando] = useState(false);
+  const [subiendoPdf, setSubiendoPdf] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [aviso, setAviso] = useState<string | null>(null);
   const [analisis, setAnalisis] = useState<AnalisisLicitacion | null>(null);
+  const inputArchivo = useRef<HTMLInputElement>(null);
+
+  async function subirPdf(archivo: File) {
+    setSubiendoPdf(true);
+    setError(null);
+    setAviso(null);
+    try {
+      const form = new FormData();
+      form.append("archivo", archivo);
+      const res = await fetch("/api/extraer-pdf", {
+        method: "POST",
+        body: form,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Error al leer el PDF.");
+      setTexto(data.texto);
+      setAviso(
+        `Texto extraído de «${archivo.name}» (${data.paginas} pág.). Revísalo y pulsa «Analizar».`,
+      );
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Error al leer el PDF.");
+    } finally {
+      setSubiendoPdf(false);
+    }
+  }
+
+  function onSeleccionArchivo(e: React.ChangeEvent<HTMLInputElement>) {
+    const archivo = e.target.files?.[0];
+    if (archivo) subirPdf(archivo);
+    e.target.value = ""; // permite volver a subir el mismo archivo
+  }
+
+  function onSoltar(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    const archivo = e.dataTransfer.files?.[0];
+    if (archivo) subirPdf(archivo);
+  }
 
   async function analizar() {
     setCargando(true);
@@ -37,12 +76,38 @@ export default function Home() {
           Licita<span className="text-accent">IA</span>
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-sm text-white/60">
-          Pega el texto de un pliego o anuncio de licitación y obtén al instante
-          un análisis de criterios, plazos, requisitos de solvencia y riesgos.
+          Sube el PDF del pliego o pega su texto y obtén al instante un análisis
+          de criterios, plazos, requisitos de solvencia y riesgos.
         </p>
       </header>
 
       <div className="space-y-4">
+        <div
+          onDrop={onSoltar}
+          onDragOver={(e) => e.preventDefault()}
+          onClick={() => inputArchivo.current?.click()}
+          className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-white/15 bg-white/[0.02] px-6 py-8 text-center transition hover:border-accent/50 hover:bg-accent/5"
+        >
+          <input
+            ref={inputArchivo}
+            type="file"
+            accept="application/pdf"
+            className="hidden"
+            onChange={onSeleccionArchivo}
+          />
+          <span className="text-sm font-medium text-white/80">
+            {subiendoPdf
+              ? "Extrayendo texto del PDF…"
+              : "Arrastra aquí el PDF del pliego o haz clic para subirlo"}
+          </span>
+          <span className="mt-1 text-xs text-white/40">PDF · máx. 10 MB</span>
+        </div>
+
+        <div className="flex items-center gap-3 text-xs text-white/30">
+          <span className="h-px flex-1 bg-white/10" />o pega el texto
+          <span className="h-px flex-1 bg-white/10" />
+        </div>
+
         <textarea
           value={texto}
           onChange={(e) => setTexto(e.target.value)}
@@ -57,13 +122,19 @@ export default function Home() {
           </span>
           <button
             onClick={analizar}
-            disabled={cargando || texto.trim().length < 50}
+            disabled={cargando || subiendoPdf || texto.trim().length < 50}
             className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-40"
           >
             {cargando ? "Analizando…" : "Analizar licitación"}
           </button>
         </div>
       </div>
+
+      {aviso && (
+        <p className="mt-6 rounded-lg border border-accent/30 bg-accent/10 p-4 text-sm text-white/80">
+          {aviso}
+        </p>
+      )}
 
       {error && (
         <p className="mt-6 rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200">
