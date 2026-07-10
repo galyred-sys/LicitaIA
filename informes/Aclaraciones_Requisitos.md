@@ -69,4 +69,18 @@ Registro de interpretaciones confirmadas contra el texto del Anexo Técnico. Cad
 
 ---
 
+## AC‑03 · Barrido completo de direccionamiento a marca en el Anexo
+
+**Pregunta.** ¿Hay más cláusulas con "huella de marca" además del almacenamiento (AC‑02)?
+
+**Respuesta.** Sí — muchas. Se hizo un barrido de todo el Anexo (seguridad, cómputo, red, transversales, nube, monitoreo). Se identificaron **~9 componentes con direccionamiento mono‑fabricante encubierto**, que juntos forman el stack de un integrador: **Huawei** (almacenamiento + red), **Palo Alto** (firewall + EDR), **Infoblox** (DNS), **McAfee/Trellix** (SIEM + firewall de BD) y **Blancco** (borrado seguro); más marcas de facto/nombradas (Trend Micro, F5, VMware, Commvault, WSO2, AWS/Azure, Oracle/IBM legado).
+
+**Conclusión.** El Anexo describe una **arquitectura de referencia concreta**, no requisitos neutrales → **hay un favorito** con ese stack preintegrado. En fallo binario, un consorcio ajeno arranca en desventaja estructural.
+
+**El detalle completo (tabla de 22 componentes, tells, confianza, reformulación neutral y lectura de go/no‑go) está en el documento `Mapa_Direccionamiento.md` / `.pdf`.**
+
+**Estado:** verificado · pendiente decisión de go/no‑go condicionada a la junta de aclaraciones.
+
+---
+
 *Documento de trabajo. Las citas corresponden al Anexo Técnico proporcionado; verificar contra la convocatoria oficial antes de tomar decisiones vinculantes.*
