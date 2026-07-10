@@ -6,7 +6,7 @@ Análisis y documentos de trabajo para la licitación **"Servicio Administrado d
 
 | Archivo | Descripción |
 | --- | --- |
-| **`00_Dossier_Licitacion_SEP_CentroDatos_2026-2027.pdf`** | **Documento único (43 págs.)** con portada, resumen ejecutivo para dirección, índice y las 10 secciones consolidadas. Este es el entregable completo. |
+| **`00_Dossier_Licitacion_SEP_CentroDatos_2026-2027.pdf`** | **Documento único (49 págs.)** con portada, resumen ejecutivo para dirección, índice y las 12 secciones consolidadas. Este es el entregable completo. |
 | `Informe_Licitacion_SEP_2026-2027.html` | Informe de inteligencia (página web): análisis técnico, SLAs, arquitectura de mínimo precio, estimación de costos, matriz de cumplimiento, proveedores/consorcio, barreras y riesgos. |
 | `Informe_Licitacion_SEP_2026-2027.pdf` | Versión PDF (12 págs.) del informe anterior. |
 | `Preguntas_Junta_Aclaraciones.md` | 42 preguntas para la junta de aclaraciones, agrupadas por área, con referencia al Anexo y notas internas de estrategia. Editable. |
@@ -19,6 +19,8 @@ Análisis y documentos de trabajo para la licitación **"Servicio Administrado d
 | `Propuesta_Economica.md` / `.pdf` | Estructura de la propuesta económica: periodos de facturación, resumen por partida y notas de cotización. |
 | `Plan_Migracion.md` / `.pdf` | Plan de migración/transición hacia el 1/sep/2026: fases, camino crítico, corte por criticidad, riesgos e hitos. |
 | `Plantilla_Organigrama.md` / `.pdf` | Plantilla ~55+ y organigrama del consorcio: roles, cantidades, certificaciones y socio asignado. |
+| `Analisis_Aliados.md` / `.pdf` | Análisis de aliados potenciales (B Drive IT, Ikusi/Micronet, CIIME): qué cumple cada uno, matriz comparativa, huecos y socios a sumar. |
+| `Checklist_Due_Diligence_Aliados.md` / `.pdf` | Lista de verificación de documentos a solicitar a cada aliado antes de comprometer la propuesta, con puntos específicos por sus banderas de riesgo. |
 
 ## Avisos
 
