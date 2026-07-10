@@ -6,7 +6,7 @@ Análisis y documentos de trabajo para la licitación **"Servicio Administrado d
 
 | Archivo | Descripción |
 | --- | --- |
-| **`00_Dossier_Licitacion_SEP_CentroDatos_2026-2027.pdf`** | **Documento único (52 págs.)** con portada, resumen ejecutivo para dirección, índice y las 13 secciones consolidadas. Este es el entregable completo. |
+| **`00_Dossier_Licitacion_SEP_CentroDatos_2026-2027.pdf`** | **Documento único (54 págs.)** con portada, resumen ejecutivo para dirección, índice y las 14 secciones consolidadas. Este es el entregable completo. |
 | `Informe_Licitacion_SEP_2026-2027.html` | Informe de inteligencia (página web): análisis técnico, SLAs, arquitectura de mínimo precio, estimación de costos, matriz de cumplimiento, proveedores/consorcio, barreras y riesgos. |
 | `Informe_Licitacion_SEP_2026-2027.pdf` | Versión PDF (12 págs.) del informe anterior. |
 | `Preguntas_Junta_Aclaraciones.md` | 42 preguntas para la junta de aclaraciones, agrupadas por área, con referencia al Anexo y notas internas de estrategia. Editable. |
@@ -22,6 +22,7 @@ Análisis y documentos de trabajo para la licitación **"Servicio Administrado d
 | `Analisis_Aliados.md` / `.pdf` | Análisis de aliados potenciales (B Drive IT, Ikusi/Micronet, CIIME): qué cumple cada uno, matriz comparativa, huecos y socios a sumar. |
 | `Checklist_Due_Diligence_Aliados.md` / `.pdf` | Lista de verificación de documentos a solicitar a cada aliado antes de comprometer la propuesta, con puntos específicos por sus banderas de riesgo. |
 | `Candidatos_Huecos.md` / `.pdf` | Candidatos reales confirmados (con evidencia y fuentes) para cerrar los 8 huecos del consorcio, con veredicto por candidato y tabla resumen de a quién sumar. |
+| `Aclaraciones_Requisitos.md` / `.pdf` | Registro de interpretaciones confirmadas contra el Anexo (con cita textual). Primera entrada: la regla de ≥5 años y su aplicación en participación conjunta. |
 
 ## Avisos
 
